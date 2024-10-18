@@ -1,0 +1,121 @@
+.login-container {
+    background-color: var(--muted);
+    padding: 2.5rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
+    width: 600px;
+    margin-inline-start: auto;
+    margin-inline-end: auto;
+    margin-top: 140px;
+    max-width: 90%;
+}
+
+.login-logo {
+    font-size: 1.75rem;
+    font-weight: 600;
+    color: var(--primary);
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.login-form h2 {
+    font-size: 1.25rem;
+    margin-bottom: 1.5rem;
+    color: var(--foreground);
+    text-align: center;
+    font-weight: 500;
+}
+
+.form-group {
+    margin-bottom: 1.25rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.375rem;
+    color: var(--foreground);
+    font-size: 0.9375rem;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 0.625rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+    background-color: rgba(255, 255, 255, 0.05);
+    color: var(--foreground);
+    font-size: 0.9375rem;
+    transition: border-color 0.3s ease, background-color 0.3s ease;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: var(--primary);
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.remember-forgot {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.25rem;
+    font-size: 0.8125rem;
+}
+
+.remember-me {
+    display: flex;
+    align-items: center;
+}
+
+.remember-me input {
+    margin-right: 0.375rem;
+}
+
+.forgot-password {
+    color: var(--primary);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.forgot-password:hover {
+    color: var(--accent);
+}
+
+.submit-btn {
+    width: 100%;
+    padding: 0.625rem;
+    background-color: var(--primary);
+    color: var(--foreground);
+    border: none;
+    border-radius: 4px;
+    font-size: 0.9375rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.submit-btn:hover {
+    background-color: var(--accent);
+}
+
+.signup-link {
+    margin-top: 1.25rem;
+    font-size: 0.8125rem;
+    text-align: center;
+}
+
+.signup-link a {
+    color: var(--primary);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.signup-link a:hover {
+    color: var(--accent);
+}
+
+@media (max-width: 480px) {
+    .login-container {
+        padding: 2rem;
+    }
+}
