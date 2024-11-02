@@ -1,10 +1,10 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import "./css/signup.css";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-
+import { useNavigate } from "react-router-dom";
 export default function SignUp() {
-
+  const navigate = useNavigate();
   const validationSchema = Yup.object({
     fullname: Yup.string()
       .matches(/^[A-Za-z\s]+$/, "Fullname can only contain letters and spaces")
@@ -38,10 +38,32 @@ export default function SignUp() {
     },
   });
 
+  const signUp = async (e) =>{
+    e.preventDefault();
+    
+    try{
+      const res = await fetch("http://localhost:8089/api/user/signup",{
+        method: 'POST',
+        headers : {
+          "Content-Type":"application/json"
+        },
+        body: JSON.stringify(formik.values)
+      });
+      console.log(res.json());
+      navigate('/login');
+    }catch(error){
+      console.log(e);
+    }
+  }
+
+  useEffect(()=>{
+    console.log("hello");
+  },[])
+
   return (
     <div className="signup-container">
       <div className="signup-logo">ProBlog</div>
-      <form onSubmit={formik.handleSubmit}>
+      <form onSubmit={signUp}>
         <h2>Create your account</h2>
         <div className="form-group">
           <label for="fullname">Full Name</label>
