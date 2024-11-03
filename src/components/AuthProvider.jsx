@@ -6,7 +6,11 @@ export const AuthContext = createContext(null);
 export const ContextProvider = ({ children }) => {
     const [user, setUser] = useState();
     const navigate = useNavigate();
+    const [errorMessage, setErrorMessage] = useState("");
+    const [load, setLoad] = useState(false);
+
     const login = async (e,values)=>{
+        setLoad(true);
         e.preventDefault();
         try{
             let res = await fetch("http://localhost:8089/api/user/login", {
@@ -18,8 +22,11 @@ export const ContextProvider = ({ children }) => {
             } )
             if (!res.ok) {
                 setErrorMessage("Login failed. Please check your credentials.");
+                setTimeout(() => {
+                    setErrorMessage("");
+                }, 20000);
                 throw new Error("Login failed. Please check your credentials.");
-              }
+            }
             const data = await res.json();
             if(data.token) {
                 console.log("connect successful");
@@ -30,13 +37,13 @@ export const ContextProvider = ({ children }) => {
                     email: data.token.email,
                 }
                 setUser(u);
+                setLoad(false);
                 navigate("/");
             }
-
         }catch(e){
             console.log(e);
-            console.log("error");
         }
+        setLoad(false);
     }
 
     const logout = () => {
@@ -44,6 +51,7 @@ export const ContextProvider = ({ children }) => {
         setUser(null);
     }
     let isLoggedIn = !!user;
+    
     useEffect(() => {
 
         const token = localStorage.getItem("token");
@@ -60,7 +68,7 @@ export const ContextProvider = ({ children }) => {
         isLoggedIn = !!user;
     });
     return (
-        <AuthContext.Provider value={{ user, login, logout, isLoggedIn}}>
+        <AuthContext.Provider value={{ user, login, logout, isLoggedIn, errorMessage, load}}>
             {children}
         </AuthContext.Provider>
     );

@@ -319,6 +319,29 @@ a {
 }
 
 
+.loader {
+  width: 22px;
+  height: 22px;
+  border: 2px solid #FFF;
+  border-bottom-color: transparent;
+  border-radius: 50%;
+  display: inline-block;
+  box-sizing: border-box;
+  animation: rotation 1s linear infinite;
+  }
+
+  @keyframes rotation {
+  0% {
+      transform: rotate(0deg);
+  }
+  100% {
+      transform: rotate(360deg);
+  }
+  } 
+
+ 
+
+
 @media (max-width: 1300px) {
   .navbar{
     max-width: 90%;
@@ -375,5 +398,95 @@ a {
 
   .showcase p {
       font-size: 1rem;
+  }
+}
+
+/* Add these new styles to your existing CSS file */
+
+.blog-container {
+  background-color: var(--muted);
+  padding: 1.2rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
+  max-width: 800px;
+  margin: 2rem auto;
+  margin-top: 120px;
+}
+
+.blog-header {
+  margin-bottom: 1.5rem;
+}
+
+.blog-title {
+  font-size: 1.2rem;
+  color: var(--primary);
+  margin-bottom: 0.5rem;
+}
+
+.blog-meta {
+  display: flex;
+  justify-content: space-between;
+  color: var(--foreground);
+  font-size: 0.9rem;
+}
+
+.blog-image-container {
+  margin-bottom: 1.5rem;
+}
+
+.blog-image {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+.blog-content p {
+  margin-bottom: 1rem;
+  line-height: 1.6;
+  color: var(--foreground);
+}
+
+.blog-footer {
+  margin-top: 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.blog-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.blog-tag {
+  background-color: var(--primary);
+  color: var(--foreground);
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.8rem;
+}
+
+.share-btn {
+  background-color: var(--accent);
+  color: var(--foreground);
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.share-btn:hover {
+  background-color: var(--secondary);
+}
+
+@media (max-width: 768px) {
+  .blog-container {
+    padding: 1.5rem;
+  }
+
+  .blog-title {
+    font-size: 1rem;
   }
 }

@@ -17,14 +17,16 @@ export default function Navbar(){
                     <a href="#" className="logo">ProBlog</a>
 
                     <div className={MenuIsActive == false ? "nav-links" : "nav-links active" }>
-                        
                         <Link to="" ><a>Home</a></Link>
-                        <Link to="" ><a>Add Blog</a></Link>
+                        
                         { !auth.isLoggedIn && (
                         <Link to="/Login" ><a className="connect-link"><FaUserCircle className="icon" />Login</a></Link>
                         )}
                         {auth.isLoggedIn && (
-                        <Link to="/Login" onClick={auth.logout} ><a className="connect-link">Logout</a></Link>
+                            <>
+                                <Link to="/addblog" ><a>Add Blog</a></Link>
+                                <Link to="/Login" onClick={auth.logout} ><a className="connect-link">Logout</a></Link>
+                            </>
                         )}
                         </div>
                        

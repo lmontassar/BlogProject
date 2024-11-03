@@ -6,7 +6,6 @@ import { useAuth } from "./AuthProvider";
 
 export default function Login(){
 
-
     const validationInputs = Yup.object({
         email: Yup.string()
         .email("Invalid email address")
@@ -52,6 +51,7 @@ export default function Login(){
                         <small className="invalid">{formik.errors.password}</small>
                     ) : null}
                 </div>
+                
                 <div className="remember-forgot">
                     <div className="remember-me">
                         <input type="checkbox" id="remember" name="remember"/>
@@ -59,7 +59,19 @@ export default function Login(){
                     </div>
                     <a href="#" className="forgot-password">Forgot password?</a>
                 </div>
-                <button type="submit" className="submit-btn">Log In</button>
+                
+                    <button type="submit" className={"submit-btn" } >
+                        {auth.load && (
+                            <span class="loader"></span>
+                        )}
+                        {!auth.load && (
+                            "Log In"
+                        )}
+                    </button>
+
+                    {auth.errorMessage && (
+                        <small className="invalid">{auth.errorMessage}</small>
+                    )}
                 <div className="signup-link">
                     <p>Don't have an account? <Link to="/SignUp" ><a>Sign up</a></Link></p>
                 </div>
